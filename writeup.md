@@ -97,7 +97,7 @@ Here is the windows defined,
 |:-----------------:|:-------------------------------------------:| 
 | (400,464),(416,408)      | 1       | 
 | (400,496),(432,528)      		| 1.5      								  |
-| (400,528)     | 2      								  |
+| (400,528),(432,560)     | 2      								  |
 | (400,596),(464,660)    | 3        								      |
 
 ![alt text][searching_area]
@@ -142,5 +142,7 @@ To process the detection more smoothly and robust between frames. I create a cla
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-  
+  1. Parameters tuning. Many parameters need to be tuned, so I use a loop to do training and testing to get the best accuracy. But this causes overfitting problem. Test images are used to partly exclude overfitting patterns. Need to collect more data to have a better model. And deep learning method can also be used after having enough data.
+  2. False positive problem. There are false positives during testing. Heatmap threshold can exclude some but sometimes it can not. Then I restrict the detection area to filter. This method need to collaborate with the detection of current driving lane(left/center/right), since the driving lane decides the possible vehicle appearing area.
+  3. Vehicle tracking problem. Currently I just simply use historical position of vehicle to help do tracking and detection correcting. More advanced methods can be involved such as kalman filter. 
 

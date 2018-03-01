@@ -458,7 +458,13 @@ def process_frame_for_video(img):
     scale = 2.0
     rects.append(find_cars(img, ystart, ystop, scale, color_space, svc, X_scaler, 
                            orient, pix_per_cell, cell_per_block, spatial_size, hist_bin, show_all_rectangles=False))
-    
+						   
+	ystart = 432
+	ystop = 560
+	scale = 2.0
+    rects.append(find_cars(img, ystart, ystop, scale, color_space, svc, X_scaler, 
+                           orient, pix_per_cell, cell_per_block, spatial_size, hist_bin, show_all_rectangles=False))
+	
     ystart = 400
     ystop = 596
     scale = 3.0
