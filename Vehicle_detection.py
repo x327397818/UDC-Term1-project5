@@ -260,67 +260,7 @@ def Training_process(car_images, noncar_images):
     pickle.dump(dist_pickle, open("training_result.p", "wb" ))
 
 #Training_process(car_images, noncar_images)
-    
-'''    
-color_space = 'YUV'# Can be RGB, HSV, LUV, HLS, YUV, YCrCb
-orient = 9  # HOG orientations
-pix_per_cell = 8  # HOG pixels per cell
-cell_per_block = 2 # HOG cells per block
-hog_channel = 'ALL' # Can be 0, 1, 2, or "ALL"
-spatial_size = (16, 16) # Spatial binning dimensions
-hist_bin = 16    # Number of histogram bins
-spatial_feat = True # Spatial features on or off
-hist_feat = True # Histogram features on or off
-hog_feat = True # HOG features on or off
-
-car_features = extract_features(car_images, color_space=color_space, 
-                                spatial_size=spatial_size, hist_bins=hist_bin, 
-                                orient=orient, pix_per_cell=pix_per_cell, 
-                                cell_per_block=cell_per_block, 
-                                hog_channel=hog_channel, spatial_feat=spatial_feat, 
-                                hist_feat=hist_feat, hog_feat=hog_feat)
-notcar_features = extract_features(noncar_images, color_space=color_space, 
-                                   spatial_size=spatial_size, hist_bins=hist_bin, 
-                                   orient=orient, pix_per_cell=pix_per_cell, 
-                                   cell_per_block=cell_per_block, 
-                                   hog_channel=hog_channel, spatial_feat=spatial_feat, 
-                                   hist_feat=hist_feat, hog_feat=hog_feat)
-                                
-#create labled data sets
-X = np.vstack((car_features, notcar_features)).astype(np.float64) 
-y = np.hstack((np.ones(len(car_features)), np.zeros(len(notcar_features))))
-#split data to training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=np.random.randint(0, 100))
-
-# Fit a per-column scaler
-X_scaler = StandardScaler().fit(X_train)
-# Apply the scaler to X
-X_train = X_scaler.transform(X_train)
-X_test = X_scaler.transform(X_test)
-#train a classifier use linear svc
-svc = LinearSVC()
-svc.fit(X_train, y_train)
-score = round(svc.score(X_test, y_test),4)
-
-print(score)
-
-dist_pickle = {}
-dist_pickle["svc"] = svc
-dist_pickle["Max_Accuracy"] = score
-dist_pickle["color_space"] = color_space
-dist_pickle["orient"] = orient
-dist_pickle["pix_per_cell"] = pix_per_cell
-dist_pickle["cell_per_block"] = cell_per_block
-dist_pickle["hog_channel"] = hog_channel
-dist_pickle["spatial_size"] = spatial_size
-dist_pickle["hist_bin"] = hist_bin
-dist_pickle["spatial_feat"] = spatial_feat
-dist_pickle["hist_feat"] = hist_feat
-dist_pickle["hog_feat"] = hog_feat
-dist_pickle["X_scaler"] = X_scaler
-pickle.dump(dist_pickle, open("training_result.p", "wb" ))
-
-'''
+   
 # Define a function to draw bounding boxes on an image
 def draw_boxes(img, bboxes, color=(0, 0, 255), thick=6):
     imcopy = np.copy(img) # Make a copy of the image
